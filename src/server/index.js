@@ -1,6 +1,6 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 import postRouter from 'apis/postApi';
 
@@ -10,12 +10,16 @@ const app = express();
 // MIDDLEWARES
 // ###########
 
+// Data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // Static assets
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+// APIS
+app.use('/posts', postRouter);
 
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, () => {
