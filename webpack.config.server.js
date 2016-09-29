@@ -10,7 +10,7 @@ module.exports = {
       return acc;
     }
 
-    acc[mod] = 'commonjs ' + mod;
+    acc[mod] = `commonjs ${mod}`;
     return acc;
   }, {}),
   output: {
