@@ -2,15 +2,18 @@
   "name": "express-react-practice-1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "npm run build && node server.bundle.js",
-    "start:dev": "webpack-dev-server --hot --inline --history-api-fallback --content-base public/",
+    "start:dev": "webpack-dev-server --hot --inline --config webpack.config.dev.js",
     "build": "npm run build:server && npm run build:client",
-    "build:server": "webpack --config webpack.config.server.js",
-    "build:client": "webpack --config webpack.config.client.js"
+    "build:server": "webpack --config webpack.config.prod.server.js",
+    "build:client": "webpack --config webpack.config.prod.client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DdZ-Fred/express-react-practice-1.git"
   },
   "keywords": [],
   "author": "",
@@ -29,11 +32,13 @@
   },
   "dependencies": {
     "axios": "^0.14.0",
+    "babel-plugin-transform-react-constant-elements": "^6.9.1",
+    "babel-plugin-transform-react-inline-elements": "^6.8.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "if-env": "^1.0.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",

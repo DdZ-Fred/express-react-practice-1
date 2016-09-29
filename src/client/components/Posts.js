@@ -1,22 +1,21 @@
 import React, { PropTypes } from 'react';
 import PostShape from 'shapes/PostShape';
+import Post from 'components/Post';
 
 const propTypes = {
   posts: PropTypes.arrayOf(PostShape).isRequired,
 };
 
-class Posts extends React.Component {
-  render() {
-    return (
+function Posts({ posts }) {
+  return (
       <ul>
       {
-        this.props.posts.map(post => (
+        posts.map(post => (
             <Post key={post.id} post={post}/>
         ))
       }
       </ul>
     );
-  }
 }
 
 Posts.propTypes = propTypes;

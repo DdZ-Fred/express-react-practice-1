@@ -3,6 +3,10 @@ const fs = require('fs');
 
 module.exports = {
   entry: './src/server/index.js',
+  output: {
+    path: './',
+    filename: 'server.bundle.js',
+  },
   target: 'node',
   externals: fs.readdirSync('node_modules')
   .reduce((acc, mod) => {
@@ -13,9 +17,9 @@ module.exports = {
     acc[mod] = `commonjs ${mod}`;
     return acc;
   }, {}),
-  output: {
-    path: './',
-    filename: 'server.bundle.js',
+  node: {
+    process: true,
+    __dirname: true,
   },
   resolve: {
     extensions: ['', '.js', '.json'],
