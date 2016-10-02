@@ -13,5 +13,3 @@ module.exports.config = {
     ],
   },
 };
-
-module.exports.babelLoader = 'babel?presets[]=es2015,presets[]=react,presets[]=stage-2';

@@ -13,6 +13,9 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 
+// Object.assign Polyfill for IE and other non-compatible clients
+Object.assign = Object.assign || require('object-assign');
+
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />

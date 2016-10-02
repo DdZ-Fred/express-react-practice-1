@@ -1,14 +1,24 @@
 const webpack = require('webpack');
 const base = require('./webpack.config.base.js');
 
-const babelProdPlugins = 'plugins[]=transform-react-constant-elements,plugins[]=transform-react-inline-elements';
-
-module.exports = Object.assign(base.config, {
+module.exports = Object.assign({}, base.config, {
   module: {
     loaders: [
       {
         exclude: /node_modules/,
-        loaders: [`${base.babelLoader},${babelProdPlugins}`],
+        loader: 'babel',
+        query: {
+          presets: [
+            'es2015',
+            'react',
+            'stage-2',
+          ],
+          plugins: [
+            ['transform-es2015-for-of', { loose: true }],
+            'transform-react-constant-elements',
+            'transform-react-inline-elements',
+          ],
+        },
       },
     ],
   },

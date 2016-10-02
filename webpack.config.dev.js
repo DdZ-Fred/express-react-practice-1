@@ -1,6 +1,6 @@
 const base = require('./webpack.config.base.js');
 
-module.exports = Object.assign(base.config, {
+module.exports = Object.assign({}, base.config, {
   devServer: {
     contentBase: 'public/',
     historyApiFallback: true,
@@ -12,7 +12,7 @@ module.exports = Object.assign(base.config, {
         exclude: /node_modules/,
         loaders: [
           'react-hot-loader/webpack',
-          base.babelLoader,
+          'babel?presets[]=es2015,presets[]=react,presets[]=stage-2',
         ],
       },
     ],
