@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports.config = {
+module.exports = {
   entry: './src/client/index.js',
   output: {
     path: './public',

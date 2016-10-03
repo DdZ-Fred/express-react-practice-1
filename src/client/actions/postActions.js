@@ -1,4 +1,5 @@
 import axios from 'axios';
+import objectToURLQueryString from 'utils/objectToURLQueryString';
 
 export const CREATE_POST = 'CREATE_POST';
 export const GET_POST = 'GET_POST';
@@ -8,7 +9,7 @@ export const PATCH_POST = 'PATCH_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 const CONFIG = {
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://localhost:8080/api',
 };
 
 export function createPost({ data }) {
@@ -25,7 +26,6 @@ export function getPost({ id }) {
   };
 }
 
-//
 export function getPosts(options) {
   return {
     type: GET_POSTS,

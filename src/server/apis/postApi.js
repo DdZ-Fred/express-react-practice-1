@@ -19,6 +19,30 @@ const posts = [
     body: 'Body #3',
     subtitle: 'Subtitle #3',
   },
+  {
+    id: 4,
+    title: 'Post #4',
+    body: 'Body #4',
+    subtitle: 'Subtitle #4',
+  },
+  {
+    id: 5,
+    title: 'Post #5',
+    body: 'Body #5',
+    subtitle: 'Subtitle #5',
+  },
+  {
+    id: 6,
+    title: 'Post #6',
+    body: 'Body #6',
+    subtitle: 'Subtitle #6',
+  },
+  {
+    id: 7,
+    title: 'Post #7',
+    body: 'Body #7',
+    subtitle: 'Subtitle #7',
+  },
 ];
 
 const postRouter = express.Router({
@@ -35,6 +59,9 @@ postRouter.post('/', ({ body: { title, body, subtitle } }, res) => {
 });
 
 postRouter.get('/', (req, res) => {
+  if (req.query) {
+    // Filter results
+  }
   res.json(posts);
 });
 

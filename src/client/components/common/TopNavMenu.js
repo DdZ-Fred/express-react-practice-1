@@ -1,16 +1,19 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import { IndexLink, Link } from 'react-router';
 
-class TopNavMenu extends PureComponent {
+// Can't use PureComponent as context changes' propagation is blocked
+// by the shouldComponentUpdate which always returns false
+class TopNavMenu extends Component {
   render() {
     return (
       <div className="blog-masthead">
           <div className="container">
               <nav className="nav blog-nav">
-                  <a className="nav-link active" href="#">Home</a>
-                  <a className="nav-link" href="#">New features</a>
-                  <a className="nav-link" href="#">Press</a>
-                  <a className="nav-link" href="#">New hires</a>
-                  <a className="nav-link" href="#">About</a>
+                  <IndexLink className="nav-link" activeClassName="active" to="/">Home</IndexLink>
+                  <Link className="nav-link" activeClassName="active" to="/posts">All Posts</Link>
+                  <Link className="nav-link" activeClassName="active" to="/press">Press</Link>
+                  <Link className="nav-link" activeClassName="active" to="/hires">New hires</Link>
+                  <Link className="nav-link" activeClassName="active" to="/about">About</Link>
               </nav>
           </div>
       </div>

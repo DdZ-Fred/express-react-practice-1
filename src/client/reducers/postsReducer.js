@@ -1,4 +1,11 @@
-import { CREATE_POST, UPDATE_POST, PATCH_POST, DELETE_POST } from 'actions/postActions';
+import {
+  CREATE_POST,
+  GET_POST,
+  GET_POSTS,
+  UPDATE_POST,
+  PATCH_POST,
+  DELETE_POST,
+} from 'actions/postActions';
 
 
 function getPostIndexById(id, posts) {
@@ -16,6 +23,11 @@ export default function (state = [], action) {
       console.log('CREATE_POST RECEIVED!', action);
       return [action.payload.data, ...state];
     }
+    case GET_POSTS: {
+      console.log('GET_POSTS RECEIVED!', action);
+      return action.payload.data;
+    }
+
     case UPDATE_POST: {
       console.log('UPDATE_POST RECEIVED!', action);
       postIndex = getPostIndexById(action.payload.data.id, state);

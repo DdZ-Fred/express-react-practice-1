@@ -18,8 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve('./public')));
 
 
-// APIS
-app.use('/posts', postRouter);
+app.use('/api/posts', postRouter);
 
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, () => {
