@@ -3,7 +3,10 @@ import { render } from 'react-dom';
 import promiseMiddleware from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+
+// import { Router, browserHistory } from 'react-router';
+import Router from 'react-router/lib/Router';
+import browserHistory from 'react-router/lib/browserHistory';
 
 import rootReducer from 'reducers/';
 import routes from 'routes/';

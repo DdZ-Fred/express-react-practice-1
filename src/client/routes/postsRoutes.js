@@ -1,5 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router';
+
+// import { Route } from 'react-router';
+import Route from 'react-router/lib/Route';
+
 import NewPost from 'components/pages/post/NewPost';
 import Posts from 'components/pages/post/Posts';
 import Post from 'components/pages/post/Post';

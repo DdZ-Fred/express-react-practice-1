@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { IndexLink, Link } from 'react-router';
+// import { IndexLink, Link } from 'react-router';
+
+import IndexLink from 'react-router/lib/IndexLink';
+import Link from 'react-router/lib/Link';
 
 // Can't use PureComponent as context changes' propagation is blocked
 // by the shouldComponentUpdate which always returns false

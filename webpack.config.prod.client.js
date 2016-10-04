@@ -33,7 +33,7 @@ module.exports = Object.assign({}, baseConfig, {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false,
+        warnings: true,
         screw_ie8: true, //  Remove IE 6-8 Support
         drop_console: true, //  Discard console.* calls
       },
