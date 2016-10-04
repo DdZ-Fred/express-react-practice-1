@@ -1,19 +1,21 @@
 import React, { PropTypes } from 'react';
-import PostShape from 'shapes/PostShape';
+import postShape from 'shapes/postShape';
 
 const propTypes = {
-  post: PostShape,
+  post: postShape.isRequired,
 };
 
-function Post({ post: { id, title, body, subtitle } }) {
+function Post({ post }) {
   return (
-    <li>
-      <h4>{`${title} - `}<small>{id}</small></h4>
-      <h5>{subtitle}</h5>
-      <br/><br/>
-      <p>{body}</p>
-      <hr/>
-    </li>
+    <div className="col-sm-8 blog-main">
+      <li>
+        <h4>{`${post.title} - `}<small>{post.id}</small></h4>
+        <h5>{post.subtitle}</h5>
+        <br/><br/>
+        <p>{post.body}</p>
+        <hr/>
+      </li>
+    </div>
   );
 }
 
