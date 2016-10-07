@@ -1,5 +1,7 @@
 import express from 'express';
 
+import PostModel from 'models/Post';
+
 const posts = [
   {
     id: 1,
