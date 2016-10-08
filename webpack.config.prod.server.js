@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/server/index.js',
@@ -39,4 +40,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    // In order to sourcemaps stack traces
+    new webpack.BannerPlugin('require("source-map-support").install();', {
+      raw: true,
+      entryOnly: false,
+    }),
+  ],
 };

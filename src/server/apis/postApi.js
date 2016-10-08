@@ -1,6 +1,5 @@
-import express from 'express';
-
-import PostModel from 'models/Post';
+const express = require('express');
+const PostModel = require('../models/Post');
 
 const posts = [
   {
@@ -83,4 +82,4 @@ postRouter.delete('/:id', (req, res) => {
   console.log('[DELETE] Post requested');
 });
 
-export default postRouter;
+module.exports = postRouter;

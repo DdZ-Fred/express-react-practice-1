@@ -7,8 +7,10 @@ const mongoose = require('mongoose');
  * @param  {Object} app         [Express app instance]
  * @return {Object}             [Express server]
  */
-export default function startServer(MONGODB_URL, PORT, app) {
+module.exports = function startServer(MONGODB_URL, PORT, app) {
   let server;
+  const serverType = PORT === 8080 ? 'Production' : 'Development';
+
   mongoose.connect(MONGODB_URL, (err, res) => {
     if (err) {
       console.log('[MONGOOSE] Connection to DB failed!', err);
@@ -16,9 +18,9 @@ export default function startServer(MONGODB_URL, PORT, app) {
     } else {
       console.log('[MONGOOSE] Connection to DB succeeded!');
       server = app.listen(PORT, () => {
-        console.log(`Server is now listening on localhost:${PORT}`);
+        console.log(`${serverType} Server is now listening on localhost:${PORT}`);
       });
     }
   });
   return server;
-}
+};
