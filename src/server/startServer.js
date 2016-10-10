@@ -9,12 +9,13 @@ const mongoose = require('mongoose');
  */
 module.exports = function startServer(MONGODB_URL, PORT, app) {
   let server;
-  const serverType = PORT === 8080 ? 'Production' : 'Development';
+  const serverType = process.env.NODE_ENV === 'production' ?
+    'Production' : 'Development';
 
   mongoose.connect(MONGODB_URL, (err, res) => {
     if (err) {
       console.log('[MONGOOSE] Connection to DB failed!', err);
-      throw new Error('Mongoose connection to DB failed!', err);
+      throw new Error('Mongoose connection to DB failed!');
     } else {
       console.log('[MONGOOSE] Connection to DB succeeded!');
       server = app.listen(PORT, () => {

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import objectToURLQueryString from 'utils/objectToURLQueryString';
+import serverConfig from 'shared/serverConfig';
 
 export const CREATE_POST = 'CREATE_POST';
 export const GET_POST = 'GET_POST';
@@ -8,8 +9,11 @@ export const UPDATE_POST = 'UPDATE_POST';
 export const PATCH_POST = 'PATCH_POST';
 export const DELETE_POST = 'DELETE_POST';
 
+const apiConfig = process.env.NODE_ENV === 'production' ?
+  serverConfig.prod : serverConfig.dev;
+
 const CONFIG = {
-  baseURL: 'http://localhost:8080/api',
+  baseURL: `http://${apiConfig.API_SERVER_ADDRESS}:${apiConfig.PORT}/api`,
 };
 
 export function createPost({ data }) {

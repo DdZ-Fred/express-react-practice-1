@@ -8,7 +8,7 @@
     "start:prod": "npm run build && node src/server/prodServer.js",
     "start:dev": "run-p -l start:dev-client-watch start:dev-api-watch",
     "start:dev-client-watch": "webpack-dev-server --hot --inline --config webpack.config.dev.js",
-    "start:dev-api-watch": "nodemon src/server/devServer.js",
+    "start:dev-api-watch": "nodemon --watch src/server/ src/server/devServer.js",
     "build": "npm run build:client",
     "build:client": "webpack --config webpack.config.prod.client.js"
   },
