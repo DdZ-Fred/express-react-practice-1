@@ -1,7 +1,5 @@
 const path = require('path');
 
-// DONE:0 Replace resolve.root by resolve.alias as it brings more flexibility: otherwize I cannot use the shared folder
-
 module.exports = {
   entry: './src/client/index.js',
   output: {
