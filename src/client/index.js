@@ -1,8 +1,12 @@
 import React from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import { render } from 'react-dom';
 import promiseMiddleware from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+
+// Material-UI Touch events plugin
+injectTapEventPlugin();
 
 // import { Router, browserHistory } from 'react-router';
 import Router from 'react-router/lib/Router';
