@@ -5,6 +5,7 @@ import TopNavMenu from 'components/common/TopNavMenu';
 import SideBar from 'components/common/SideBar';
 import Header from 'components/common/Header';
 import Footer from 'components/common/Footer';
+import tabs from 'data/tabs';
 
 // #IN-PROGRESS:10 Find Bootstrap components equivalents in Material-UI
 
@@ -13,7 +14,7 @@ function App({ children }) {
     <MuiThemeProvider>
       <div>
         <Brand />
-        <TopNavMenu/>
+        <TopNavMenu tabs={tabs}/>
         <Header />
         <div className="container">
           <div className="row">

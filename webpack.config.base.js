@@ -13,6 +13,7 @@ module.exports = {
       actions: path.resolve(__dirname, 'src/client/actions'),
       components: path.resolve(__dirname, 'src/client/components'),
       containers: path.resolve(__dirname, 'src/client/containers'),
+      data: path.resolve(__dirname, 'src/client/data'),
       reducers: path.resolve(__dirname, 'src/client/reducers'),
       routes: path.resolve(__dirname, 'src/client/routes'),
       shapes: path.resolve(__dirname, 'src/client/shapes'),

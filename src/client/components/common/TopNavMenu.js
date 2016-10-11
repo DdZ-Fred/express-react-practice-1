@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import { withRouter } from 'react-router';
+import withRouter from 'react-router/lib/withRouter';
 import IndexLink from 'react-router/lib/IndexLink';
 import Link from 'react-router/lib/Link';
+import tabShape from 'shapes/tabShape';
 
 const style = {
   tabs: {
@@ -20,19 +21,33 @@ const style = {
   },
 };
 
+const propTypes = {
+  tabs: PropTypes.arrayOf(tabShape).isRequired,
+  router: PropTypes.object.isRequired,
+};
 
-// #TODO:0 Migrate Bootstrap navbar to MUI Tabs
-// Can't use PureComponent as context changes' propagation is blocked
-// by the shouldComponentUpdate which always returns false
+// #DONE:10 Migrate Bootstrap navbar to MUI Tabs
 class TopNavMenu extends Component {
 
   constructor(props) {
     super(props);
-    this.renderTabs = this.renderTabs.bind(this);
+    this.handleOnActiveTab = this.handleOnActiveTab.bind(this);
+  }
+
+  handleOnActiveTab(tab) {
+    console.log('Active tab:', tab);
+    this.props.router.push(tab.props['data-route']);
   }
 
   renderTabs() {
-
+    return this.props.tabs.map((tab, idx) => (
+      <Tab
+        key={idx}
+        label={tab.label}
+        style={style.tab}
+        data-route={tab.route}
+        onActive={this.handleOnActiveTab}/>
+    ));
   }
 
   render() {
@@ -40,19 +55,11 @@ class TopNavMenu extends Component {
       <Tabs
         style={style.tabs.root}
         inkBarStyle={style.tabs.inkBar}>
-        <Tab label="Home" style={style.tab}></Tab>
-        <Tab label="Posts" style={style.tab}></Tab>
-        <Tab label="Press" style={style.tab}></Tab>
-        <Tab label="New Hires" style={style.tab}></Tab>
-        <Tab label="About" style={style.tab}></Tab>
-        {/* <IndexLink className="nav-link" activeClassName="active" to="/">Home</IndexLink>
-        <Link className="nav-link" activeClassName="active" to="/posts">All Posts</Link>
-        <Link className="nav-link" activeClassName="active" to="/press">Press</Link>
-        <Link className="nav-link" activeClassName="active" to="/hires">New hires</Link>
-        <Link className="nav-link" activeClassName="active" to="/about">About</Link> */}
+        {this.renderTabs()}
       </Tabs>
     );
   }
 }
 
+TopNavMenu.propTypes = propTypes;
 export default withRouter(TopNavMenu);
