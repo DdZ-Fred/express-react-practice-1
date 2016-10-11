@@ -51,6 +51,7 @@ const postRouter = express.Router({
 });
 
 postRouter.post('/', ({ body: { title, body, subtitle } }, res) => {
+  console.log('[API-Post] POST request received');
   res.status(201).json({
     id: 4,
     title,
@@ -60,6 +61,7 @@ postRouter.post('/', ({ body: { title, body, subtitle } }, res) => {
 });
 
 postRouter.get('/', (req, res) => {
+  console.log('[API-Post] GET(All) request received');
   if (req.query) {
     // Filter results
   }
@@ -67,19 +69,20 @@ postRouter.get('/', (req, res) => {
 });
 
 postRouter.get('/:id', ({ params }, res) => {
+  console.log('[API-Post] GET(id) request received');
   res.json(posts[params.id - 1]);
 });
 
 postRouter.put('/:id', (req, res) => {
-  console.log('[PUT] Post requested');
+  console.log('[API-Post] PUT request received');
 });
 
 postRouter.patch('/:id', (req, res) => {
-  console.log('[PATCH] Post requested');
+  console.log('[API-Post] PATCH request received');
 });
 
 postRouter.delete('/:id', (req, res) => {
-  console.log('[DELETE] Post requested');
+  console.log('[API-Post] DELETE request received');
 });
 
 module.exports = postRouter;

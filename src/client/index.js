@@ -8,9 +8,9 @@ import { Provider } from 'react-redux';
 // Material-UI Touch events plugin
 injectTapEventPlugin();
 
-// import { Router, browserHistory } from 'react-router';
-import Router from 'react-router/lib/Router';
-import browserHistory from 'react-router/lib/browserHistory';
+import { Router, browserHistory } from 'react-router';
+// import Router from 'react-router/lib/Router';
+// import browserHistory from 'react-router/lib/browserHistory';
 
 import rootReducer from 'reducers/';
 import routes from 'routes/';

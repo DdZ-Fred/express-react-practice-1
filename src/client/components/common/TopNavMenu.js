@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import { IndexLink, Link } from 'react-router';
-
+import { Tabs, Tab } from 'material-ui/Tabs';
 import IndexLink from 'react-router/lib/IndexLink';
 import Link from 'react-router/lib/Link';
 
+// #TODO:0 Migrate Bootstrap navbar to MUI Tabs
 // Can't use PureComponent as context changes' propagation is blocked
 // by the shouldComponentUpdate which always returns false
 class TopNavMenu extends Component {
