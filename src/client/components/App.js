@@ -3,7 +3,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Brand from 'components/common/Brand';
 import TopNavMenu from 'components/common/TopNavMenu';
 import SideBar from 'components/common/SideBar';
-import Header from 'components/common/Header';
 import Footer from 'components/common/Footer';
 import tabs from 'data/tabs';
 
@@ -15,7 +14,6 @@ function App({ children }) {
       <div>
         <Brand />
         <TopNavMenu tabs={tabs}/>
-        <Header />
         <div className="container">
           <div className="row">
             {children}

@@ -12,7 +12,7 @@ const style = {
     },
     // InkBar: Moving Bar which underlines the active tab
     inkBar: {
-      backgroundColor: '#0c65b1',
+      backgroundColor: '#3479b5',
       height: 2,
     },
   },
@@ -26,7 +26,6 @@ const propTypes = {
   router: PropTypes.object.isRequired,
 };
 
-// #DONE:10 Migrate Bootstrap navbar to MUI Tabs
 class TopNavMenu extends Component {
 
   constructor(props) {
