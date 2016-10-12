@@ -8,7 +8,7 @@ import tabShape from 'shapes/tabShape';
 const style = {
   tabs: {
     root: {
-      marginBottom: 20,
+      marginBottom: 2,
     },
     // InkBar: Moving Bar which underlines the active tab
     inkBar: {
