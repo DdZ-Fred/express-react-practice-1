@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import {
   Toolbar,
   ToolbarGroup,
   ToolbarSeparator,
-  ToolbarTitle,
 } from 'material-ui/Toolbar';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -11,11 +11,12 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Link from 'react-router/lib/Link';
 // import withRouter from 'react-router/lib/withRouter';
+import { setResultsPerPage } from 'actions/postToolbarActions';
 
 
 const style = {
   root: {
-    backgroundColor: '#83b1d7',
+    backgroundColor: '#5da4e0',
     maxWidth: 700,
     margin: 'auto',
     color: 'white',
@@ -29,7 +30,8 @@ const style = {
 const propTypes = {
   resultsPerPageMenuItems: PropTypes.array.isRequired,
   currentResultsPerPage: PropTypes.number.isRequired,
-  updateResultsPerPage: PropTypes.func.isRequired,
+  setResultsPerPage: PropTypes.func.isRequired,
+  currentResultsFilter: PropTypes.object.isRequired,
 };
 
 class PostToolbar extends React.Component {
@@ -59,7 +61,7 @@ class PostToolbar extends React.Component {
             containerElement={<Link to="/posts"/>} />
             <DropDownMenu
               value={this.props.currentResultsPerPage}
-              onChange={this.props.updateResultsPerPage}>
+              onChange={this.props.setResultsPerPage}>
               {this.renderResultsPerPageMenuItems()}
             </DropDownMenu>
         </ToolbarGroup>
@@ -74,5 +76,17 @@ class PostToolbar extends React.Component {
     );
   }
 }
+
+function mapStateToProps({ postToolbar }) {
+  return {
+    currentResultsPerPage: postToolbar.currentResultsPerPage,
+    currentResultsFilter: postToolbar.currentResultsFilter,
+  };
+}
+
+
 PostToolbar.propTypes = propTypes;
-export default PostToolbar;
+export default connect(
+mapStateToProps,
+{ setResultsPerPage }
+)(PostToolbar);
