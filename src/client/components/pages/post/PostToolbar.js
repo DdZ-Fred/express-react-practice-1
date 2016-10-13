@@ -14,18 +14,64 @@ import Link from 'react-router/lib/Link';
 import { setResultsPerPage } from 'actions/postToolbarActions';
 
 
-const style = {
-  root: {
+/**
+ ******************
+ *     STYLES     *
+ ******************
+**/
+
+const toolbarStyles = {
+  style: {
     backgroundColor: '#5da4e0',
     maxWidth: 700,
     margin: 'auto',
     color: 'white',
   },
-  title: {
-    color: 'white',
-    fontSize: '0.7em',
+};
+
+const resultsPerPageDropDownMenuStyles = {
+  style: {
+    borderBottomStyle: 'solid',
+    borderBottomColor: '#3479b5',
+    borderBottomWidth: 2,
+  },
+  labelStyle: {
+    color: '#f2f2f2',
+  },
+  iconStyle: {
+
+  },
+  listStyle: {
+
+  },
+  menuStyle: {
+    backgroundColor: '#428bca',
+    selectedMenuItemStyle: {
+      color: 'blue',
+    },
+  },
+  underlineStyle: {
+    color: 'green',
   },
 };
+
+const resultsPerPageDropDownMenuItemStyles = {
+  style: {
+    backgroundColor: '#428bca',
+    color: 'white',
+    border: 0,
+  },
+  innerDivStyle: {
+    border: 0,
+  },
+};
+
+
+/**
+ * ***************
+ * COMPONENT STUFF
+ * ***************
+**/
 
 const propTypes = {
   resultsPerPageMenuItems: PropTypes.array.isRequired,
@@ -43,7 +89,12 @@ class PostToolbar extends React.Component {
 
   renderResultsPerPageMenuItems() {
     return this.props.resultsPerPageMenuItems.map(item => (
-      <MenuItem key={item.value} value={item.value} primaryText={`${item.value * 5} per page`}/>
+      <MenuItem
+        style={resultsPerPageDropDownMenuItemStyles.style}
+        innerDivStyle={resultsPerPageDropDownMenuItemStyles.innerDivStyle}
+        key={item.value}
+        value={item.value}
+        primaryText={`${item.value * 5} per page`}/>
     ));
   }
 
@@ -53,13 +104,19 @@ class PostToolbar extends React.Component {
 
   render() {
     return (
-      <Toolbar style={style.root}>
+      <Toolbar style={toolbarStyles.style}>
         <ToolbarGroup firstChild={true}>
           <RaisedButton
             label="Show Posts"
             primary={true}
             containerElement={<Link to="/posts"/>} />
             <DropDownMenu
+              style={resultsPerPageDropDownMenuStyles.style}
+              labelStyle={resultsPerPageDropDownMenuStyles.labelStyle}
+              iconStyle={resultsPerPageDropDownMenuStyles.iconStyle}
+              listStyle={resultsPerPageDropDownMenuStyles.listStyle}
+              menuStyle={resultsPerPageDropDownMenuStyles.menuStyle}
+              underlineStyle={resultsPerPageDropDownMenuStyles.underlineStyle}
               value={this.props.currentResultsPerPage}
               onChange={this.props.setResultsPerPage}>
               {this.renderResultsPerPageMenuItems()}
