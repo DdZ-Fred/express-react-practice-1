@@ -31,9 +31,7 @@ const toolbarStyles = {
 
 const resultsPerPageDropDownMenuStyles = {
   style: {
-    borderBottomStyle: 'solid',
-    borderBottomColor: '#3479b5',
-    borderBottomWidth: 2,
+
   },
   labelStyle: {
     color: '#f2f2f2',

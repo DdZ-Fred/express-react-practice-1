@@ -5,6 +5,16 @@ import IndexLink from 'react-router/lib/IndexLink';
 import Link from 'react-router/lib/Link';
 import tabShape from 'shapes/tabShape';
 
+
+const propTypes = {
+  tabs: PropTypes.arrayOf(tabShape).isRequired,
+  router: PropTypes.object.isRequired,
+};
+
+const contextTypes = {
+  muiTheme: PropTypes.object.isRequired,
+};
+
 const style = {
   tabs: {
     root: {
@@ -19,11 +29,6 @@ const style = {
   tab: {
     backgroundColor: '#64a5dd',
   },
-};
-
-const propTypes = {
-  tabs: PropTypes.arrayOf(tabShape).isRequired,
-  router: PropTypes.object.isRequired,
 };
 
 class TopNavMenu extends Component {
@@ -61,4 +66,5 @@ class TopNavMenu extends Component {
 }
 
 TopNavMenu.propTypes = propTypes;
+TopNavMenu.contextTypes = contextTypes;
 export default withRouter(TopNavMenu);

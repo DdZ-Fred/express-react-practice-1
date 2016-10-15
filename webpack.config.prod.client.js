@@ -14,9 +14,9 @@ module.exports = Object.assign({}, baseConfig, {
             'stage-2',
           ],
           plugins: [
-            ['transform-es2015-for-of', { loose: true }],
             'transform-react-constant-elements',
             'transform-react-inline-elements',
+            ['transform-react-remove-prop-types', { 'mode': 'wrap' }],
           ],
         },
       },
