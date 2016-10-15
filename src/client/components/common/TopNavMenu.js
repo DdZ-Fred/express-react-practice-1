@@ -15,21 +15,6 @@ const contextTypes = {
   muiTheme: PropTypes.object.isRequired,
 };
 
-const style = {
-  tabs: {
-    root: {
-      marginBottom: 2,
-    },
-    // InkBar: Moving Bar which underlines the active tab
-    inkBar: {
-      backgroundColor: '#3479b5',
-      height: 2,
-    },
-  },
-  tab: {
-    backgroundColor: '#64a5dd',
-  },
-};
 
 class TopNavMenu extends Component {
 
@@ -44,21 +29,36 @@ class TopNavMenu extends Component {
   }
 
   renderTabs() {
+    const tabStyle = {
+      backgroundColor: this.context.muiTheme.palette.primary2Color,
+    };
+
     return this.props.tabs.map((tab, idx) => (
       <Tab
         key={idx}
         label={tab.label}
-        style={style.tab}
+        style={tabStyle}
         data-route={tab.route}
         onActive={this.handleOnActiveTab}/>
     ));
   }
 
   render() {
+    const tabsStyles = {
+      root: {
+        marginBottom: 2,
+      },
+      // InkBar: Moving Bar which underlines the active tab
+      inkBar: {
+        backgroundColor: this.context.muiTheme.palette.primary3Color,
+        height: 2,
+      },
+    };
+
     return (
       <Tabs
-        style={style.tabs.root}
-        inkBarStyle={style.tabs.inkBar}>
+        style={tabsStyles.root}
+        inkBarStyle={tabsStyles.inkBar}>
         {this.renderTabs()}
       </Tabs>
     );

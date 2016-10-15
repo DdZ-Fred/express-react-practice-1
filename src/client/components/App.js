@@ -4,7 +4,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
   blue400,
   blue300,
-  blue200,
+  blue600,
   white,
 } from 'material-ui/styles/colors';
 import Brand from 'components/common/Brand';
@@ -19,7 +19,7 @@ const muiTheme = getMuiTheme({
   palette: {
     primary1Color: blue400,
     primary2Color: blue300,
-    primary3Color: blue200,
+    primary3Color: blue600,
     accent1Color: 'blue',
     // accent2Color: '',
     // accent3Color: '',
