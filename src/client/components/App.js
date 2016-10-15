@@ -27,7 +27,6 @@ const muiTheme = getMuiTheme({
     // textColor: lightWhite,
     // alternateTextColor: darkWhite,
     menuItem: {
-      border: 0,
     },
   },
 });
@@ -41,7 +40,7 @@ function App({ children }) {
         <div className="container">
           <div className="row">
             {children}
-            <SideBar/>
+            {/* <SideBar/> */}
           </div>
         </div>
         <Footer />
