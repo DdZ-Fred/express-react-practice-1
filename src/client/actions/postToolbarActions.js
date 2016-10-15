@@ -20,23 +20,39 @@ export function setResultsPerPage(event, index, value) {
 
 /* **************************
  * **************************
- *      RESULTS FILTER
+ *      RESULTS FILTERS
  * **************************
  * ************************ */
 
-export const SET_RESULTS_FILTER_AUTHOR = 'SET_RESULTS_FILTER_AUTHOR';
-export const SET_RESULTS_FILTER_TOPIC = 'SET_RESULTS_FILTER_TOPIC';
+export const TOGGLE_RESULTS_FILTER = 'TOGGLE_RESULTS_FILTER';
+export const SET_RESULTS_FILTER_VALUE = 'SET_RESULTS_FILTER_VALUE';
 
-export function setResultsFilterAuthor(author) {
+export function toggleResultsFilter(filterName) {
   return {
-    type: SET_RESULTS_FILTER_AUTHOR,
-    author,
+    type: TOGGLE_RESULTS_FILTER,
+    filterName,
   };
 }
 
-export function setResultsFilterTopic(topic) {
+export function setResultsFilterValue(filterName, value) {
   return {
-    type: SET_RESULTS_FILTER_TOPIC,
-    topic,
+    type: SET_RESULTS_FILTER_VALUE,
+    filterName,
+    value,
+  };
+}
+
+
+/* ******************************
+ * ******************************
+ *      IS FILTERS DRAWER OPEN
+ * ******************************
+ * *************************** */
+
+export const TOGGLE_FILTERS_DRAWER = 'TOGGLE_FILTERS_DRAWER';
+
+export function toggleFiltersDrawer() {
+  return {
+    type: TOGGLE_FILTERS_DRAWER,
   };
 }

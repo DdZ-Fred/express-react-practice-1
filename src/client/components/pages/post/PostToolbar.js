@@ -10,17 +10,31 @@ import {
   ToolbarSeparator,
 } from 'material-ui/Toolbar';
 import DropDownMenu from 'material-ui/DropDownMenu';
+import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import Checkbox from 'material-ui/Checkbox';
+import TextField from 'material-ui/TextField';
+// import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import Link from 'react-router/lib/Link';
-import { setResultsPerPage } from 'actions/postToolbarActions';
+import {
+  setResultsPerPage,
+  toggleResultsFilter,
+  setResultsFilterValue,
+  toggleFiltersDrawer,
+} from 'actions/postToolbarActions';
 
 
 const propTypes = {
   resultsPerPageMenuItems: PropTypes.array.isRequired,
   currentResultsPerPage: PropTypes.number.isRequired,
   setResultsPerPage: PropTypes.func.isRequired,
-  currentResultsFilter: PropTypes.object.isRequired,
+  currentResultsFilters: PropTypes.object.isRequired,
+  toggleResultsFilter: PropTypes.func.isRequired,
+  setResultsFilterValue: PropTypes.func.isRequired,
+  isFiltersDrawerOpen: PropTypes.bool.isRequired,
+  toggleFiltersDrawer: PropTypes.func.isRequired,
 };
 
 const contextTypes = {
@@ -31,7 +45,6 @@ class PostToolbar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleRouteButton = this.handleRouteButton.bind(this);
   }
 
   renderResultsPerPageMenuItems() {
@@ -55,8 +68,18 @@ class PostToolbar extends React.Component {
     ));
   }
 
-  handleRouteButton(e) {
-    console.log('Button clicked', e.target);
+  renderResultsFilterItems() {
+    const filtersNames = Object.getOwnPropertyNames(this.props.currentResultsFilters);
+
+    return filtersNames.map(filterName => (
+      <MenuItem
+        key={filterName}>
+        <Checkbox
+          checked={this.props.currentResultsFilters[filterName].active}/>
+        <TextField
+          floatingLabelText={filterName.toUpperCase()} />
+      </MenuItem>
+    ));
   }
 
   render() {
@@ -100,6 +123,17 @@ class PostToolbar extends React.Component {
               onChange={this.props.setResultsPerPage}>
               {this.renderResultsPerPageMenuItems()}
             </DropDownMenu>
+            <FlatButton
+              label="Filters"
+              secondary={true}
+              hoverColor={this.context.muiTheme.palette.primary2Color}
+              onTouchTap={this.props.toggleFiltersDrawer} />
+            <Drawer
+              open={this.props.isFiltersDrawerOpen}>
+
+            </Drawer>
+              {/* {this.renderResultsFilterItems()} */}
+
         </ToolbarGroup>
         <ToolbarSeparator />
         <ToolbarGroup lastChild={true}>
@@ -116,7 +150,8 @@ class PostToolbar extends React.Component {
 function mapStateToProps({ postToolbar }) {
   return {
     currentResultsPerPage: postToolbar.currentResultsPerPage,
-    currentResultsFilter: postToolbar.currentResultsFilter,
+    currentResultsFilters: postToolbar.currentResultsFilters,
+    isFiltersDrawerOpen: postToolbar.isFiltersDrawerOpen,
   };
 }
 
@@ -125,5 +160,5 @@ PostToolbar.propTypes = propTypes;
 PostToolbar.contextTypes = contextTypes;
 export default connect(
 mapStateToProps,
-{ setResultsPerPage }
+{ setResultsPerPage, toggleResultsFilter, setResultsFilterValue, toggleFiltersDrawer }
 )(PostToolbar);

@@ -16,8 +16,6 @@ import SideBar from 'components/common/SideBar';
 import Footer from 'components/common/Footer';
 import tabs from 'data/tabs';
 
-// #IN-PROGRESS:10 Find Bootstrap components equivalents in Material-UI
-// #TODO: Update muiTheme with new accent1Color(selectedItemColor)
 const muiTheme = getMuiTheme({
   palette: {
     primary1Color: blue400,
@@ -26,8 +24,6 @@ const muiTheme = getMuiTheme({
     accent1Color: white,
     // textColor: lightWhite,
     // alternateTextColor: darkWhite,
-    menuItem: {
-    },
   },
 });
 

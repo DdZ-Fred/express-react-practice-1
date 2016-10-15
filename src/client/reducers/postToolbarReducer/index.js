@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import currentResultsPerPageReducer from 'reducers/postToolbarReducer/currentResultsPerPageReducer';
-import currentResultsFilterReducer from 'reducers/postToolbarReducer/currentResultsFilterReducer';
+import currentResultsFiltersReducer from 'reducers/postToolbarReducer/currentResultsFiltersReducer';
+import isFiltersDrawerOpenReducer from 'reducers/postToolbarReducer/isFiltersDrawerOpenReducer';
 
 const postToolbarReducer = combineReducers({
   currentResultsPerPage: currentResultsPerPageReducer,
-  currentResultsFilter: currentResultsFilterReducer,
+  currentResultsFilters: currentResultsFiltersReducer,
+  isFiltersDrawerOpen: isFiltersDrawerOpenReducer,
 });
 
 export default postToolbarReducer;
