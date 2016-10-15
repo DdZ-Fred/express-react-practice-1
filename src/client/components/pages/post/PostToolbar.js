@@ -1,81 +1,30 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {
+  lightWhite,
+  darkWhite,
+} from 'material-ui/styles/colors';
+import {
   Toolbar,
   ToolbarGroup,
   ToolbarSeparator,
 } from 'material-ui/Toolbar';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-// import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Link from 'react-router/lib/Link';
-// import withRouter from 'react-router/lib/withRouter';
 import { setResultsPerPage } from 'actions/postToolbarActions';
 
-
-/**
- ******************
- *     STYLES     *
- ******************
-**/
-
-const toolbarStyles = {
-  style: {
-    backgroundColor: '#5da4e0',
-    maxWidth: 700,
-    margin: 'auto',
-    color: 'white',
-  },
-};
-
-const resultsPerPageDropDownMenuStyles = {
-  style: {
-
-  },
-  labelStyle: {
-    color: '#f2f2f2',
-  },
-  iconStyle: {
-
-  },
-  listStyle: {
-
-  },
-  menuStyle: {
-    backgroundColor: '#428bca',
-    selectedMenuItemStyle: {
-      color: 'blue',
-    },
-  },
-  underlineStyle: {
-    color: 'green',
-  },
-};
-
-const resultsPerPageDropDownMenuItemStyles = {
-  style: {
-    backgroundColor: '#428bca',
-    color: 'white',
-    border: 0,
-  },
-  innerDivStyle: {
-    border: 0,
-  },
-};
-
-
-/**
- * ***************
- * COMPONENT STUFF
- * ***************
-**/
 
 const propTypes = {
   resultsPerPageMenuItems: PropTypes.array.isRequired,
   currentResultsPerPage: PropTypes.number.isRequired,
   setResultsPerPage: PropTypes.func.isRequired,
   currentResultsFilter: PropTypes.object.isRequired,
+};
+
+const contextTypes = {
+  muiTheme: PropTypes.object.isRequired,
 };
 
 class PostToolbar extends React.Component {
@@ -86,10 +35,20 @@ class PostToolbar extends React.Component {
   }
 
   renderResultsPerPageMenuItems() {
+    const menuItemStyles = {
+      root: {
+        backgroundColor: this.context.muiTheme.palette.primary1Color,
+        color: lightWhite,
+        // spacing: 5,
+      },
+      innerDivStyle: {
+      },
+    };
+
     return this.props.resultsPerPageMenuItems.map(item => (
       <MenuItem
-        style={resultsPerPageDropDownMenuItemStyles.style}
-        innerDivStyle={resultsPerPageDropDownMenuItemStyles.innerDivStyle}
+        style={menuItemStyles.root}
+        innerDivStyle={menuItemStyles.innerDivStyle}
         key={item.value}
         value={item.value}
         primaryText={`${item.value * 5} per page`}/>
@@ -101,8 +60,31 @@ class PostToolbar extends React.Component {
   }
 
   render() {
+    const toolbarStyle = {
+      backgroundColor: this.context.muiTheme.palette.primary1Color,
+      maxWidth: 700,
+      margin: 'auto',
+    };
+    const resultsPerPageDropDownMenuStyles = {
+      style: {
+        // color: darkWhite,
+      },
+      labelStyle: {
+        color: darkWhite,
+      },
+      iconStyle: {
+
+      },
+      listStyle: {
+        // color: darkWhite,
+      },
+      menuStyle: {
+        backgroundColor: this.context.muiTheme.palette.primary1Color,
+      },
+    };
+
     return (
-      <Toolbar style={toolbarStyles.style}>
+      <Toolbar style={toolbarStyle}>
         <ToolbarGroup firstChild={true}>
           <RaisedButton
             label="Show Posts"
@@ -114,7 +96,6 @@ class PostToolbar extends React.Component {
               iconStyle={resultsPerPageDropDownMenuStyles.iconStyle}
               listStyle={resultsPerPageDropDownMenuStyles.listStyle}
               menuStyle={resultsPerPageDropDownMenuStyles.menuStyle}
-              underlineStyle={resultsPerPageDropDownMenuStyles.underlineStyle}
               value={this.props.currentResultsPerPage}
               onChange={this.props.setResultsPerPage}>
               {this.renderResultsPerPageMenuItems()}
@@ -141,6 +122,7 @@ function mapStateToProps({ postToolbar }) {
 
 
 PostToolbar.propTypes = propTypes;
+PostToolbar.contextTypes = contextTypes;
 export default connect(
 mapStateToProps,
 { setResultsPerPage }

@@ -6,6 +6,9 @@ import {
   blue300,
   blue600,
   white,
+  lightWhite,
+  darkWhite,
+  minBlack,
 } from 'material-ui/styles/colors';
 import Brand from 'components/common/Brand';
 import TopNavMenu from 'components/common/TopNavMenu';
@@ -20,10 +23,12 @@ const muiTheme = getMuiTheme({
     primary1Color: blue400,
     primary2Color: blue300,
     primary3Color: blue600,
-    accent1Color: 'blue',
-    // accent2Color: '',
-    // accent3Color: '',
-    textColor: white,
+    accent1Color: white,
+    // textColor: lightWhite,
+    // alternateTextColor: darkWhite,
+    menuItem: {
+      border: 0,
+    },
   },
 });
 
